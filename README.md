@@ -3,6 +3,10 @@ A light react state manager based on React Hooks.
 
 You can use states across multiple react components. 
 
+```
+npm i @necolo/react-state
+```
+
 ## Usage
 It's very simple to use it in React hooks
 
