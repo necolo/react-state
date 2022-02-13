@@ -119,7 +119,7 @@ type Deps<T> = (v: T) => unknown[];
 function useModel<M extends Model, V extends ModelV<M>>(
   model: M,
   deps?: Deps<V>
-) {
+): V {
   useDebugValue(model.name);
   const container = useContext(getModelContext(model)) as Container<V>;
   const [state, setState] = useState(container.state);
