@@ -1,8 +1,9 @@
 {
   "name": "@necolo/react-state",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A light react state manager based on React Hooks",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
@@ -33,6 +34,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@types/react": "^17.0.39",
     "typescript": "^4.5.5"
   },
   "dependencies": {
