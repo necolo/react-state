@@ -6,7 +6,7 @@ import React, {
   useDebugValue,
   PropsWithChildren,
   ReactElement,
-} from "react";
+} from 'react';
 
 interface Model<P extends any[] = any[], V = any> {
   (...args: P): V;
