@@ -158,10 +158,9 @@ function isEquals(v1: unknown[], v2: unknown[]) {
   return v1.every((v, i) => v === v2[i]);
 }
 
-function Providers(props: {
+function Providers(props: React.PropsWithChildren<{
   models: ProviderProps<Model<any[]>>[];
-  children: React.ReactNode;
-}) {
+}>) {
   return props.models.reverse().reduce((children, providerProps) => {
     return <Provider {...providerProps}>{children}</Provider>;
   }, props.children) as JSX.Element;
