@@ -11,6 +11,10 @@ import React, {
 interface Model<P extends any[] = any[], V = any> {
   (...args: P): V;
   context?: React.Context<Container<V>>;
+  use?: (deps?: (v: V) => unknown[]) => V;
+}
+interface ModelExport<P extends any[], V> extends Model<P, V> {
+  use: (deps?: (v: V) => unknown[]) => V
 }
 type ModelP<S extends Model> = S extends Model<infer P, any> ? P : never;
 type ModelV<S extends Model> = S extends Model<any, infer V> ? V : never;
@@ -196,4 +200,9 @@ function Consumer<M extends Model>(props: {
   return props.children(model) as ReactElement;
 }
 
-export { Provider, Providers, useModel, Consumer, withModel };
+function createModel<P extends any[], V>(modelFunc: Model<P, V>) {
+  modelFunc.use = deps => useModel(modelFunc, deps); 
+  return modelFunc as ModelExport<P, V>;
+}
+
+export { Provider, Providers, useModel, Consumer, withModel, createModel };

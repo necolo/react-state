@@ -11,10 +11,10 @@ npm i @necolo/react-state
 It's very simple to use it in React hooks
 
 ```typescript
-import { useMode, Provider } from '@necolo/react-state';
+import { Provider, createModel } from '@necolo/react-state';
 
 // create your model
-function CounterModel () {
+const CounterModel = createModel(function() {
   const [value, setValue] = useState(1);
   function increase () {
     setValue(value + 1);
@@ -23,7 +23,7 @@ function CounterModel () {
     value,
     increase,
   };
-}
+});
 
 // Registry model at the top component
 function App () {
@@ -34,7 +34,7 @@ function App () {
 
 // use model in sub component
 function SubPage () {
-  const counter = useModel(CounterModel);
+  const counter = CounterModel.use();
   return <div>
     count: {counter.value}
     <button onClick={counter.increase}>increase</button>
@@ -58,7 +58,7 @@ function App() {
 }
 
 function SubPage () {
-  const counter = useModel(CounterModel);
+  const counter = CounterModel.use();
   return <div>
     count: {counter.value}
     <button onClick={counter.increase}>increase</button>
