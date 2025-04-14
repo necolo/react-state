@@ -170,27 +170,6 @@ function Providers(props: React.PropsWithChildren<{
   }, props.children) as JSX.Element;
 }
 
-// for old classes use model
-function withModel(
-  models: { [name: string]: Model },
-  Component: React.ComponentType<any>
-) {
-  return function (props) {
-    const modelList = {};
-    for (let i = 0, keys = Object.keys(models); i < keys.length; i++) {
-      const name = keys[i];
-      // tslint:disable-next-line: react-hooks-nesting
-      const model = useModel(models[name]);
-      modelList[name] = model;
-    }
-    const _props = {
-      ...modelList,
-      ...props,
-    };
-    return <Component {..._props} />;
-  };
-}
-
 function Consumer<M extends Model>(props: {
   model: M;
   deps?: Deps<ModelV<M>>;
@@ -205,4 +184,4 @@ function createModel<P extends any[], V>(modelFunc: Model<P, V>) {
   return modelFunc as ModelExport<P, V>;
 }
 
-export { Provider, Providers, useModel, Consumer, withModel, createModel };
+export { Provider, Providers, useModel, Consumer, createModel };

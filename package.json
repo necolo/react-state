@@ -1,21 +1,29 @@
 {
   "name": "@necolo/react-state",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A light react state manager based on React Hooks",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "source": "src/index.tsx",
+  "main": "lib/index.mjs",
+  "typings": "lib/index.d.mts",
+  "module": "lib/index.mjs",
   "scripts": {
-    "build": "tsc"
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.mts",
+      "import": "./lib/index.mjs",
+      "default": "./lib/index.mjs"
+    }
   },
   "directories": {
     "lib": "lib"
   },
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Necolo/react-state.git"
+    "url": "git+https://github.com/necolo/react-state.git"
   },
   "keywords": [
     "react",
@@ -23,12 +31,12 @@
     "javascript",
     "typescript"
   ],
-  "author": "necolo <negko311@gmail.com>",
+  "author": "Necolo Lv.C",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Necolo/react-state/issues"
+    "url": "https://github.com/necolo/react-state/issues"
   },
-  "homepage": "https://github.com/Necolo/react-state#readme",
+  "homepage": "https://github.com/necolo/react-state#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -41,6 +49,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tslib": "^2.3.1",
+    "tsup": "^8.4.0",
     "typescript": "^4.5.5"
   }
 }
